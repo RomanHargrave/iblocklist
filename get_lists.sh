@@ -3,6 +3,10 @@
 BLOCKLIST_HOST="http://list.iblocklist.com";
 PARAMS="fileformat=p2p&archiveformat=gz"
 
+if [[ ! -d /tmp/blocklists ]]; then
+  mkdir /tmp/blocklists;
+fi
+
 COUNT=0;
 for ID in `curl -s https://www.iblocklist.com/lists.php | grep ${BLOCKLIST_HOST} | awk '{print $8}' | awk -F \= '{print $2}' | sed 's/.//;s/.$//'`; do
   ((COUNT++));
