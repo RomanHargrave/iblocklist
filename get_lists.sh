@@ -24,7 +24,7 @@ for ID in `cat $tempFolder/iblocklistslist_IDs_names.xml`; do
 	((COUNT++));
 	IFS=":" names=( $ID )
 	echo "${COUNT}: Downloading: ${names[1]}";
-	wget "${BLOCKLIST_HOST}/?list=${names[0]}&${PARAMS}" --wait=2 --random-wait --tries=2 --timeout=30 -O /tmp/blocklists/${names[1]}.gz;
+	wget "${BLOCKLIST_HOST}/?list=${names[0]}&${PARAMS}" --wait=2 --random-wait --tries=2 --timeout=30 -O $tempFolder/${names[1]}.gz;
 	
 	if [ "$decompress" == true ]; then
 
